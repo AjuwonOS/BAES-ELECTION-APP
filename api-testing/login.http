@@ -1,0 +1,7 @@
+POST http://localhost:3000/api/login
+Content-Type: application/json
+
+{
+    "matric_no": "BU22MCT2003",
+    "password": "80156651552a06c8"
+}
