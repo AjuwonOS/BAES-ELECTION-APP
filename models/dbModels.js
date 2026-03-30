@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS BAES_STUDENTS_2025_2026 (
     assistant_academic_director TEXT,
     assistant_social_director TEXT,
     assistant_general_secretary TEXT,
+    senate_representative TEXT,
     isVoted INTEGER NOT NULL DEFAULT 0
 );
 `;
