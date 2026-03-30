@@ -1,4 +1,5 @@
 import { compare, hash } from "bcrypt";
+import * as crypto from "crypto"
 
 
 // DB connnect functions
@@ -28,6 +29,5 @@ export async function doHashValidation(password, hashedPassword) {
   return result;
 }
 
+export const generatePassword = () => crypto.randomBytes(8).toString("hex");
 
-
-//sql func

@@ -16,7 +16,7 @@ async function execute(sql, params = []) {
       resolve();
     });
   });
-};
+}
 
 async function fetchAll(sql, params) {
   return new Promise((resolve, reject) => {
@@ -25,7 +25,7 @@ async function fetchAll(sql, params) {
       resolve(rows);
     });
   });
-};
+}
 
 async function fetchFirst(sql, params) {
   return new Promise((resolve, reject) => {
@@ -34,12 +34,26 @@ async function fetchFirst(sql, params) {
       resolve(row);
     });
   });
-};
+}
 
-
+// Get functions
 export async function getUserByMatricNo(matric_no) {
   try {
-    const response = await fetchFirst(sqlScripts.get.userByMatric_no, matric_no);
+    const response = await fetchFirst(
+      sqlScripts.get.userByMatric_no,
+      matric_no,
+    );
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// Insert functions
+export async function insertVoter(args) {
+  try {
+
+    const response = await execute(sqlScripts.insert.voter, args);
     return response
   } catch (error) {
     console.log(error);
