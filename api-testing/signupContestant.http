@@ -1,0 +1,13 @@
+POST http://localhost:3000/api/signup/contestant
+Content-Type: application/json
+
+{
+  "email": "ajuwonore@gmail.com",
+  "name": "Ajuwon Oreoluwa Samuel",
+  "matric_no": "BU22MED1031",
+  "position": "President",
+  "department": "Mechatronics Engineering",
+  "level": 100,
+  "cgpa": 4.71,
+  "phone": "08166124505"
+}

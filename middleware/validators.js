@@ -17,3 +17,17 @@ export const signupVoterSchema = Joi.object({
   payer_name: Joi.string().required(),
   phone: Joi.string().required()
 })
+
+export const signupContestantSchema = Joi.object({
+  matric_no: Joi.string()
+    .pattern(new RegExp("BU[0-9]+[A-Za-z]+[0-9]+"))
+    .required(),
+  name: Joi.string().required(),
+  position: Joi.string().required(),
+  email: Joi.string().email().required(),
+  department: Joi.string().required(),
+  phone: Joi.string().required(),
+  cgpa: Joi.number().required(),
+  level: Joi.number().required(),
+});
+

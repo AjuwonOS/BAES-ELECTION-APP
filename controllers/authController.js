@@ -1,5 +1,5 @@
-import { loginSchema, signupVoterSchema } from "../middleware/validators.js";
-import { getUserByMatricNo, insertVoter } from "../util/sql/sqlFunctions.js";
+import { loginSchema, signupVoterSchema, signupContestantSchema } from "../middleware/validators.js";
+import { insertVoter, getVoterByMatricNo, getContestantByMatricNo, insertContestant } from "../util/sql/sqlFunctions.js";
 import { doHash, doHashValidation, generatePassword } from "../util/functions.js";
 import jwt from "jsonwebtoken";
 import { SALTVAL } from "../util/constants.js";
@@ -14,7 +14,7 @@ export async function loginController(req, res) {
         .status(400)
         .json({ success: false, message: error.details[0].message });
 
-    const existingUser = await getUserByMatricNo(matric_no);
+    const existingUser = await getVoterByMatricNo(matric_no);
     
     if (!existingUser)
       return res
@@ -83,14 +83,17 @@ export async function signupVoterController(req, res) {
 
 export async function signupContestantController(req, res) {
   try {
-    const { email, name, matric_no, level, payer_name, phone } = req.body;
-    const { error } = signupVoterSchema.validate({
+    const { email, name, matric_no, level, position, phone, department, cgpa } =
+      req.body;
+    const { error } = signupContestantSchema.validate({
       email,
       name,
       matric_no,
       level,
-      payer_name,
+      position,
       phone,
+      department,
+      cgpa,
     });
 
     if (error)
@@ -99,18 +102,24 @@ export async function signupContestantController(req, res) {
         .json({ success: false, message: error.details[0].message });
     
     
-    const existingUser = await getUserByMatricNo(matric_no);
+    const existingUser = await getContestantByMatricNo(matric_no);
     if (existingUser)
       return res
         .status(401)
         .json({ success: false, message: "Voter already exists" });
     
-    
-    const password = generatePassword();
-    const hashedPassword = await doHash(password, SALTVAL)
-    
-    await insertVoter([email, name, matric_no, level, payer_name, phone, hashedPassword]);
-    return res.status(200).json({success: true, message: "New voter created successfully", password});
+
+    await insertContestant([
+      email,
+      name,
+      matric_no,
+      level,
+      position,
+      phone,
+      department,
+      cgpa,
+    ]);
+    return res.status(200).json({success: true, message: "New contestants created successfully"});
   } catch (error) {
     console.log(error);
   }
