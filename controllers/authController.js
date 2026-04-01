@@ -1,8 +1,9 @@
 import { loginSchema, signupVoterSchema, signupContestantSchema } from "../middleware/validators.js";
 import { insertVoter, getVoterByMatricNo, getContestantByMatricNo, insertContestant } from "../util/sql/sqlFunctions.js";
-import { doHash, doHashValidation, generatePassword } from "../util/functions.js";
+import { doHash, doHashValidation, generatePassword, removeFile } from "../util/functions.js";
 import jwt from "jsonwebtoken";
-import { SALTVAL } from "../util/constants.js";
+import { CONTESTANT_IMAGE_PATH, SALTVAL } from "../util/constants.js";
+import { join } from "path";
 
 export async function loginController(req, res) {
   try {
@@ -64,7 +65,7 @@ export async function signupVoterController(req, res) {
         .json({ success: false, message: error.details[0].message });
     
     
-    const existingUser = await getUserByMatricNo(matric_no);
+    const existingUser = await getVoterByMatricNo(matric_no);
     if (existingUser)
       return res
         .status(401)
@@ -85,6 +86,13 @@ export async function signupContestantController(req, res) {
   try {
     const { email, name, matric_no, level, position, phone, department, cgpa } =
       req.body;
+    
+    if (!req.file) 
+      return res
+        .status(400)
+        .json({ success: false, message: "Image file not uploaded" });
+    
+    const image_name = req.file.filename;    
     const { error } = signupContestantSchema.validate({
       email,
       name,
@@ -96,19 +104,23 @@ export async function signupContestantController(req, res) {
       cgpa,
     });
 
-    if (error)
+    if (error) {
+      removeFile(join(CONTESTANT_IMAGE_PATH, image_name))
       return res
         .status(400)
         .json({ success: false, message: error.details[0].message });
-    
+    }
+
     
     const existingUser = await getContestantByMatricNo(matric_no);
-    if (existingUser)
+    if (existingUser) {
+      removeFile(join(CONTESTANT_IMAGE_PATH, image_name));
       return res
-        .status(401)
-        .json({ success: false, message: "Voter already exists" });
+        .status(400)
+        .json({ success: false, message: "Aspirant already exists" });
+    }
+      
     
-
     await insertContestant([
       email,
       name,
@@ -118,7 +130,9 @@ export async function signupContestantController(req, res) {
       phone,
       department,
       cgpa,
+      image_name
     ]);
+    
     return res.status(200).json({success: true, message: "New contestants created successfully"});
   } catch (error) {
     console.log(error);

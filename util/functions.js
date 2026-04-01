@@ -1,6 +1,6 @@
 import { compare, hash } from "bcrypt";
 import * as crypto from "crypto"
-
+import { rm } from "fs";
 
 // DB connnect functions
 export function dbConnectCallback(err) {
@@ -31,3 +31,14 @@ export async function doHashValidation(password, hashedPassword) {
 
 export const generatePassword = () => crypto.randomBytes(8).toString("hex");
 
+
+//File removal functions
+export function removeFile(filePath) {
+  rm(filePath, { force: true }, (err) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    /* console.log(`File ${filePath} deleted successfully!`); */
+  })
+}
