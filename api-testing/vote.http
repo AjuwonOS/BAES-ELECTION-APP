@@ -1,0 +1,22 @@
+POST http://localhost:3000/api/vote
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkJVMjJNQ1QyMTIzIiwiaWF0IjoxNzc1OTAzNzQ5LCJleHAiOjE3NzU5MDczNDl9.yeSCZrUE7IwdVWynT68Tc5CQskRl7TFiaAbhSph4UGc
+Content-Type: application/json
+
+{
+  "president":"BU22MCT2001",
+  "vice_president":"BU22MCT2002",
+  "general_secretary":"BU22MCT2003",
+  "financial_secretary":"BU22MCT2004",
+  "treasurer":"BU22MCT2005",
+  "welfare_director":"BU22MCT2006",
+  "academic_director":"BU22MCT2007",
+  "social_director":"BU22MCT2008",
+  "sports_director": "BU22MCT2009",
+  "pro":"BU22MCT2010",
+  "assistant_welfare_director":"BU22MCT2011",
+  "assistant_academic_director":"BU22MCT2012",
+  "assistant_social_director":"BU22MCT2013",
+  "assistant_general_secretary":"BU22MCT2014",
+  "assistant_sports_director": "BU22MCT2015",
+  "senate_representative":"BU22MCT2016"
+}

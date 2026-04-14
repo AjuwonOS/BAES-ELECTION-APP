@@ -61,10 +61,45 @@ export async function getContestantByMatricNo(matric_no) {
   }
 }
 
+export async function getAllContestantData() {
+  try {
+    const response = await fetchAll(sqlScripts.get.contestsData)
+    return response;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getVoteTallyData() {
+  try {
+    const response = await fetchAll(sqlScripts.get.voteTallyData);
+    return response;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getIsVoted(matric_no) {
+  try {
+    const response = await fetchFirst(sqlScripts.get.isVoted, matric_no);
+    return response;
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function getContestantVoteCount(matric_no) {
+  try {
+    const response = await fetchFirst(sqlScripts.get.contestantVoteCount, matric_no);
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // Insert functions
 export async function insertVoter(args) {
   try {
-
     const response = await execute(sqlScripts.insert.voter, args);
     return response
   } catch (error) {
@@ -74,10 +109,31 @@ export async function insertVoter(args) {
 
 export async function insertContestant(args) {
   try {
-
     const response = await execute(sqlScripts.insert.contestant, args);
     return response
   } catch (error) {
     console.log(error);
+  }
+}
+
+
+
+//Update functions
+export async function updateVoterDetails(voteData, matric_no) {
+  try {
+    const arrVoteData = Object.values(voteData)
+    const response = await execute(sqlScripts.update.vote, [...arrVoteData, matric_no])
+    return response 
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export async function incrementContestantVoteCount(matric_no) {
+  try {
+    const response = await fetchFirst(sqlScripts.update.contestantVoteCount, [matric_no]) 
+    return response.votes;
+  } catch (error) {
+    console.log(error)
   }
 }

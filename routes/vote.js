@@ -1,11 +1,9 @@
 import { Router } from "express";
+import { authenticateToken } from "../middleware/tokenValidator.js";
+import { voteController } from "../controllers/voteController.js";
 
 const router = Router()
 
-router.post("/vote", (req, res) => {
-  console.log("vote");
-  res.sendStatus(200);
-});
-
+router.post("/vote", authenticateToken, voteController);
 
 export default router;

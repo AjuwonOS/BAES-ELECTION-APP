@@ -9,7 +9,7 @@ export async function loginController(req, res) {
   try {
     const { matric_no, password } = req.body;
     const { error } = loginSchema.validate({ matric_no, password });
-
+    
     if (error)
       return res
         .status(400)
@@ -41,6 +41,7 @@ export async function loginController(req, res) {
       success: true,
       message: "Login successful",
       token,
+      isVoted: Boolean(existingUser.isVoted)
     });
   } catch (error) {
     console.log(error);
