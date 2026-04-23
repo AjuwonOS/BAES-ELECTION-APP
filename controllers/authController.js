@@ -1,6 +1,6 @@
 import { loginSchema, signupVoterSchema, signupContestantSchema } from "../middleware/validators.js";
 import { insertVoter, getVoterByMatricNo, getContestantByMatricNo, insertContestant } from "../util/sql/sqlFunctions.js";
-import { doHash, doHashValidation, generatePassword, removeFile } from "../util/functions.js";
+import { doHash, doHashValidation, generatePassword, getDepartment, removeFile } from "../util/functions.js";
 import jwt from "jsonwebtoken";
 import { CONTESTANT_IMAGE_PATH, SALTVAL } from "../util/constants.js";
 import { join } from "path";
@@ -36,12 +36,13 @@ export async function loginController(req, res) {
       process.env.TOKEN_SECRET,
       { expiresIn: "1hr" },
     );
-
     return res.status(200).json({
       success: true,
       message: "Login successful",
       token,
-      isVoted: Boolean(existingUser.isVoted)
+      isVoted: existingUser.isvoted,
+      level: existingUser.level,
+      department: getDepartment(existingUser.matric_no)
     });
   } catch (error) {
     console.log(error);

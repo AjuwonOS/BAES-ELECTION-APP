@@ -1,5 +1,5 @@
 POST http://localhost:3000/api/vote
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkJVMjJNQ1QyMTIzIiwiaWF0IjoxNzc1OTAzNzQ5LCJleHAiOjE3NzU5MDczNDl9.yeSCZrUE7IwdVWynT68Tc5CQskRl7TFiaAbhSph4UGc
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkJVMjJNQ1QyMTIzIiwiaWF0IjoxNzc2Mjk1MDYxLCJleHAiOjE3NzYyOTg2NjF9.HO77JUoGrLzl0TQ634BIYpwX337XdegbShJGW74yi1E
 Content-Type: application/json
 
 {
@@ -18,5 +18,5 @@ Content-Type: application/json
   "assistant_social_director":"BU22MCT2013",
   "assistant_general_secretary":"BU22MCT2014",
   "assistant_sports_director": "BU22MCT2015",
-  "senate_representative":"BU22MCT2016"
+  "senate_representative":"BU22MCT2111"
 }

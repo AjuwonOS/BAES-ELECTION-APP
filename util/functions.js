@@ -2,8 +2,7 @@ import { compare, hash } from "bcrypt";
 import * as crypto from "crypto";
 import { rm } from "fs";
 import {
-  getContestantVoteCount,
-  incrementContestantVoteCount,
+  updateContestantVoteCount,
 } from "./sql/sqlFunctions.js";
 
 // DB connnect functions
@@ -55,22 +54,21 @@ export async function collateVote(voteData) {
     );
 
     await Promise.all(
-      arrVoteData.map(async (matric_no) => {
-        const newVote = await incrementContestantVoteCount(matric_no);
+      arrVoteData.map(async function (matric_no) {
+        const newVote = await updateContestantVoteCount(matric_no);
         updateVoteData[matric_no] = newVote;
       }),
     );
-
     return updateVoteData;
     
   } catch (error) {
     console.log(error);
   }
+}
 
-  /* 
-    for each matric_no
-      find the voteCount
-      increment voteCount++
-      return  voteCount
-  */
+
+export function getDepartment(matric_no) {
+  return String(matric_no).includes("EEE")
+    ? "EEE"
+    : String(matric_no).includes("MCT") ? "MCT" : null;
 }

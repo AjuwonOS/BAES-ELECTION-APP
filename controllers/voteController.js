@@ -10,9 +10,9 @@ export async function voteController(req, res) {
     const voteData = req.body;
     const { error } = voteSchema.validate(voteData);
     const matric_no = req.user.id;
-    const { isVoted } = await getIsVoted(matric_no);
-
-    if (isVoted)
+    const { isvoted } = await getIsVoted(matric_no);
+    
+    if (isvoted)
       return res
         .status(401)
         .json({
@@ -29,6 +29,7 @@ export async function voteController(req, res) {
     await updateVoterDetails(voteData, matric_no);
 
     const updatedVoteData = await collateVote(voteData)
+    
     io.emit("clientVoteUpdate", updatedVoteData)
     res.status(200).json({success: true, message: "Vote Successfully cast"});
   } catch (error) {

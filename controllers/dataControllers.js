@@ -6,8 +6,6 @@ import {
 export async function contestantDataController(req, res) {
   try {
     const contestantData = await getAllContestantData();
-    /* const presidents = contestantData.filter(data => data.position == "Vice-President");
-    console.log(presidents) */
     res.status(200).json({
       success: true,
       message: "Contestant data fetched successfully",

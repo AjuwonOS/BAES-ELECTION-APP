@@ -1,4 +1,4 @@
-import sqlite3 from "sqlite3";
+/* import sqlite3 from "sqlite3";
 import {DB} from "./util/constants.js"
 import { electorateModel, contestantModel } from "./models/dbModels.js";
 import { dbConnectCallback, dbOperationCallback } from "./util/functions.js";
@@ -11,3 +11,25 @@ models.forEach((model) => {
 });
 
 export default db;
+ */
+
+import { Pool } from "pg";
+import { electorateModel, contestantModel } from "./models/dbModels.js"
+
+const models = [electorateModel, contestantModel];
+
+const client = new Pool({connectionString:process.env.CONNECTION_STRING, ssl:{rejectUnauthorized: false}});
+
+await client
+  .connect()
+  .then(() => console.log("Database connection successful."));
+
+client.on("error", (err) => {
+  console.error("Something went wrong", err.stack)
+})
+
+for (let model of models)
+  await client.query(model)
+
+
+export default client

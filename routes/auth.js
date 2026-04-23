@@ -9,8 +9,8 @@ const router = Router()
 
 
 router.post(endPoints.voterLogin, loginController)
-router.post(endPoints.signUp.voter, signupVoterController);
-router.post(endPoints.signUp.constestant
+router.post(endPoints.voterSignUp, signupVoterController);
+router.post(endPoints.constestantSignUp
   ,
   upload.single(FILE_UPLOAD_FIELD_NAME),
   signupContestantController,

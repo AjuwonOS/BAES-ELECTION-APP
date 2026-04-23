@@ -1,2 +1,2 @@
-GET http://localhost:3000/api/data
-Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkJVMjJNQ1QyMTIzIiwiaWF0IjoxNzc1OTA3NzcxLCJleHAiOjE3NzU5MTEzNzF9.jZB2xnI6YEA45MJ7octHch5bRlnUiD4ESxXEkaGqrnw
+GET http://localhost:3000/api/contestantData
+Authorization:  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IkJVMjJNQ1QyMTIzIiwiaWF0IjoxNzc2ODEzMDY3LCJleHAiOjE3NzY4MTY2Njd9.X6GPLOQhQZM1mJSY_Gj_bxnTayV1JbWwF365YrbHfPM
