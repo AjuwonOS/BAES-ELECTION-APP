@@ -1,4 +1,4 @@
-import { voteSchema } from "../middleware/validators.js";
+import { voteSchema } from "../middleware/schema.js";
 import { collateVote } from "../util/functions.js";
 import { getIsVoted, updateVoterDetails } from "../util/sql/sqlFunctions.js";
 import { io } from "../index.js";

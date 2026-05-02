@@ -1,4 +1,4 @@
-import { loginSchema, signupVoterSchema, signupContestantSchema } from "../middleware/validators.js";
+import { loginSchema, signupVoterSchema, signupContestantSchema } from "../middleware/schema.js";
 import { insertVoter, getVoterByMatricNo, getContestantByMatricNo, insertContestant } from "../util/sql/sqlFunctions.js";
 import { doHash, doHashValidation, generatePassword, getDepartment, removeFile } from "../util/functions.js";
 import jwt from "jsonwebtoken";
