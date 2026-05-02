@@ -1,0 +1,1 @@
+function e(e){return e.split(`_`).map(e=>e.charAt(0).toUpperCase()+e.slice(1).toLowerCase()).join(` `)}export{e as t};
