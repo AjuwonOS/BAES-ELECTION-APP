@@ -20,10 +20,10 @@ const models = [electorateModel, contestantModel];
 
 const client = new Pool({connectionString:process.env.CONNECTION_STRING, ssl:{rejectUnauthorized: false}});
 
-await client
+/* await client
   .connect()
   .then(() => console.log("Database connection successful."));
-
+ */
 client.on("error", (err) => {
   console.error("Something went wrong", err.stack)
 })
