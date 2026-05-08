@@ -17,9 +17,8 @@ export const endPoints = {
   contestandData: "/contestantData",
   vote: "/vote",
   voteTally: "/voteTallyData",
-    voterSignUp: "/signup/voter",
-    constestantSignUp: "/signup/contestant",
-  
+  voterSignUp: "/signup/voter",
+  constestantSignUp: "/signup/contestant",
 };
 
-export const clientPath = "client"
+export const clientPath = "client";
