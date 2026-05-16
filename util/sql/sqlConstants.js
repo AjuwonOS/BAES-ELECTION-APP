@@ -22,8 +22,8 @@ export const sqlScripts = {
     academic_director = $7, social_director = $8, sports_director = $9, pro = $10,
     assistant_welfare_director = $11, assistant_academic_director = $12,
     assistant_social_director = $13, assistant_general_secretary = $14,
-    assistant_sports_director = $15, senate_representative = $16,
-    isVoted = true WHERE matric_no = $17`,
+    assistant_sports_director = $15, senate_representative = $16, pro2 = $17
+    isVoted = true WHERE matric_no = $18`,
     contestantVoteCount: `UPDATE ${DB_CONTESTANT_TABLE} SET votes = votes + 1 WHERE matric_no = $1 RETURNING votes`
   },
 };
