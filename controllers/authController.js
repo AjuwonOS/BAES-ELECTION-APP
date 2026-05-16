@@ -42,6 +42,7 @@ export async function loginController(req, res) {
       token,
       isVoted: existingUser.isvoted,
       level: existingUser.level,
+      name: existingUser.name,
       department: getDepartment(existingUser.matric_no)
     });
   } catch (error) {

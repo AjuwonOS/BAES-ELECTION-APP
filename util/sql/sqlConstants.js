@@ -2,7 +2,7 @@ import { DB_CONTESTANT_TABLE, DB_VOTER_TABLE } from "../constants.js";
 
 export const sqlScripts = {
   get: {
-    voterByMatric_no: `SELECT name , matric_no, password, isVoted, level FROM ${DB_VOTER_TABLE} WHERE matric_no = $1`,
+    voterByMatric_no: `SELECT name, matric_no, password, isVoted, level FROM ${DB_VOTER_TABLE} WHERE matric_no = $1`,
     contestantByMatric_no: `SELECT name , matric_no FROM ${DB_CONTESTANT_TABLE} WHERE matric_no = $1`,
     contestsData: `SELECT name, matric_no,level, position, department, image_name FROM ${DB_CONTESTANT_TABLE}`,
     isVoted: `SELECT isvoted FROM ${DB_VOTER_TABLE} WHERE matric_no = $1`,
