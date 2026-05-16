@@ -59,4 +59,6 @@ export const voteSchema = Joi.object({
   assistant_general_secretary: matric_noSchema,
   assistant_sports_director: matric_noSchema,
   senate_representative: matric_noSchema,
-})
+  senate_chairperson: matric_noSchema,
+  senate_vice_chairperson: matric_noSchema,
+});
