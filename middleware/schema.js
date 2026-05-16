@@ -52,6 +52,7 @@ export const voteSchema = Joi.object({
   social_director: matric_noSchema,
   sports_director: matric_noSchema,
   pro: matric_noSchema,
+  pro2: matric_noSchema,
   assistant_welfare_director: matric_noSchema,
   assistant_academic_director: matric_noSchema,
   assistant_social_director: matric_noSchema,

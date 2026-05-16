@@ -19,11 +19,11 @@ export const sqlScripts = {
     vote: `UPDATE ${DB_VOTER_TABLE} SET president = $1, 
     vice_president = $2, general_secretary = $3,
     financial_secretary = $4, treasurer = $5, welfare_director = $6,
-    academic_director = $7, social_director = $8, sports_director = $9, pro = $10,
-    assistant_welfare_director = $11, assistant_academic_director = $12,
-    assistant_social_director = $13, assistant_general_secretary = $14,
-    assistant_sports_director = $15, senate_representative = $16, pro2 = $17
-    isVoted = true WHERE matric_no = $18`,
-    contestantVoteCount: `UPDATE ${DB_CONTESTANT_TABLE} SET votes = votes + 1 WHERE matric_no = $1 RETURNING votes`
+    academic_director = $7, social_director = $8, sports_director = $9, pro = $10, pro2 = $11,
+    assistant_welfare_director = $12, assistant_academic_director = $13,
+    assistant_social_director = $14, assistant_general_secretary = $15,
+    assistant_sports_director = $16, senate_representative = $17, 
+    isvoted = true WHERE matric_no = $18`,
+    contestantVoteCount: `UPDATE ${DB_CONTESTANT_TABLE} SET votes = votes + 1 WHERE matric_no = $1 RETURNING votes`,
   },
 };
