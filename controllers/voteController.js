@@ -19,7 +19,8 @@ export async function voteController(req, res) {
           success: false,
           message: "This voter has already cast their vote",
         });
-      
+    
+    
     if (error)
       return res
         .status(400)
