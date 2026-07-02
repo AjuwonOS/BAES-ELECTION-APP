@@ -6,7 +6,7 @@ The **Live Voting Application** is a secure, full-stack web-based election manag
 
 The application was developed to eliminate the inefficiencies of traditional paper-based elections by providing a centralized, transparent, and responsive voting system. It supports role-based voting rules, allowing voters to see only the candidates they are eligible to vote for based on their level and department.
 
-The platform was successfully used in a departmental election with over **350 active voters**, demonstrating its ability to handle concurrent users while maintaining data integrity and real-time synchronization.
+The platform was successfully used in a Bowen Association of Engineering Students general election for the 2025/2026 session. The application catered for over **350 active voters**, demonstrating its ability to handle concurrent users while maintaining data integrity and real-time synchronization.
 
 ---
 
