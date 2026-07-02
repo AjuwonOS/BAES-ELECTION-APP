@@ -6,11 +6,7 @@ export const DB_CONTESTANT_TABLE = process.env.DB_CONTESTANT_TABLE;
 export const TOKEN_SECRET = process.env.TOKEN_SECRET || "lovette";
 export const CONTESTANT_IMAGE_PATH = process.env.CONTESTANT_IMAGE_PATH;
 export const FILE_UPLOAD_FIELD_NAME = process.env.FILE_UPLOAD_FIELD_NAME;
-export const POSTGRES_DB_HOST = process.env.POSTGRES_DB_HOST;
-export const POSTGRES_DB_PORT = parseInt(process.env.POSTGRES_DB_PORT);
-export const POSTGRES_DB = process.env.POSTGRES_DB;
-export const POSTGRES_DB_USER = process.env.POSTGRES_DB_USER;
-export const POSTGRES_DB_PASSWORD = process.env.POSTGRES_DB_PASSWORD;
+export const POSTGRES_DB_CONNECTION_STRING = process.env.CONNECTION_STRING || ""
 
 export const endPoints = {
   voterLogin: "/login",

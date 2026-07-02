@@ -15,10 +15,11 @@ export default db;
 
 import { Pool } from "pg";
 import { electorateModel, contestantModel } from "./models/dbModels.js"
+import { POSTGRES_DB_CONNECTION_STRING } from "./util/constants.js";
 
 const models = [electorateModel, contestantModel];
 
-const client = new Pool({connectionString:process.env.CONNECTION_STRING, ssl:{rejectUnauthorized: false}});
+const client = new Pool({connectionString:POSTGRES_DB_CONNECTION_STRING, ssl:{rejectUnauthorized: false}});
 
 /* await client
   .connect()
